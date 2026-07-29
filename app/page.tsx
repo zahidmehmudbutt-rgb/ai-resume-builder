@@ -4,7 +4,7 @@ export default function LandingPage() {
   return (
     <div className="relative min-h-screen text-white">
       {/* Fixed colorful wallpaper — stays in place while content scrolls over it */}
-      <div className="fixed inset-0 -z-10 bg-navy bg-hero-mesh" aria-hidden="true" />
+      <div className="fixed inset-0 -z-10 bg-navy" aria-hidden="true" />
 
       <Nav />
       <Hero />
@@ -24,7 +24,7 @@ export default function LandingPage() {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-navy/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-navy">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold">
           <span className="inline-block h-7 w-7 rounded-md bg-gradient-to-br from-brand to-gold" />
@@ -90,7 +90,7 @@ function Hero() {
 function TrustedBy() {
   const logos = ["Google", "Meta", "Stripe", "Airbnb", "Notion", "Vercel", "Linear", "Spotify"];
   return (
-    <section className="border-y border-white/5 bg-navy/60 backdrop-blur-sm py-10">
+    <section className="border-y border-white/5 bg-navy py-10">
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center text-xs uppercase tracking-widest text-white/40">
           Hires landed at
@@ -111,7 +111,7 @@ function TrustedBy() {
 
 function UserTypes() {
   return (
-    <section id="how" className="bg-navy/80 backdrop-blur-sm">
+    <section id="how">
       <div className="mx-auto max-w-6xl px-6 py-20">
       <SectionHeader eyebrow="Who is this for" title="Built for Every Stage of Your Career" />
       <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -148,7 +148,7 @@ function UserTypes() {
 
 function AiDemo() {
   return (
-    <section className="bg-navy/80 backdrop-blur-sm">
+    <section>
       <div className="mx-auto max-w-6xl px-6 py-16">
       <SectionHeader eyebrow="See the AI in action" title="From Boring Bullet to Interview-Ready" />
       <div className="mt-12 grid gap-4 md:grid-cols-3">
@@ -215,7 +215,7 @@ function DemoCard({ step, label, color, textColor, accent, children }: {
 
 function HowItWorks() {
   return (
-    <section className="bg-navy/80 backdrop-blur-sm py-20">
+    <section className="py-20">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader eyebrow="How it works" title="Three Steps to Your Perfect Resume" />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -230,7 +230,7 @@ function HowItWorks() {
 
 function Features() {
   return (
-    <section id="features" className="bg-navy/80 backdrop-blur-sm">
+    <section id="features">
       <div className="mx-auto max-w-6xl px-6 py-20">
       <SectionHeader eyebrow="Features" title="Everything You Need, Nothing You Don't" />
       <div className="mt-12 grid gap-5 md:grid-cols-3 md:auto-rows-fr">
@@ -253,7 +253,7 @@ function Features() {
 
 function BentoCard({ icon, title, body, tag, className = "" }: { icon: string; title: string; body: string; tag?: string; className?: string }) {
   return (
-    <div className={`glass relative rounded-2xl p-6 transition hover:bg-white/10 ${className}`}>
+    <div className={`bg-white/5 border border-white/10 relative rounded-2xl p-6 transition hover:bg-white/10 ${className}`}>
       {tag && <div className="absolute right-4 top-4 rounded-full bg-gold/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold">{tag}</div>}
       <div className="mb-3 text-3xl">{icon}</div>
       <h3 className="font-display text-lg font-semibold">{title}</h3>
@@ -269,7 +269,7 @@ function Testimonials() {
       role: "Software Engineer · Stripe",
       avatar: "PS",
       gradient: "from-pink-500 to-orange-500",
-      quote: "Got 3 interviews in my first week using ResumeAI Pro. The ATS score feature alone is worth it.",
+      quote: "Got 3 interviews in my first week using AI Resume Builder. The ATS score feature alone is worth it.",
     },
     {
       name: "Marcus Chen",
@@ -288,12 +288,12 @@ function Testimonials() {
   ];
 
   return (
-    <section className="bg-navy/80 backdrop-blur-sm py-20">
+    <section className="py-20">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader eyebrow="Testimonials" title="Loved by Job Seekers Worldwide" />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {items.map((t, i) => (
-            <div key={i} className="glass rounded-2xl p-6">
+            <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6">
               <div className="flex gap-1 text-gold">
                 {"★★★★★".split("").map((s, j) => <span key={j}>{s}</span>)}
               </div>
@@ -317,7 +317,7 @@ function Testimonials() {
 
 function Pricing() {
   return (
-    <section id="pricing" className="bg-navy/80 backdrop-blur-sm py-20">
+    <section id="pricing" className="py-20">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader eyebrow="Pricing" title="Simple, Transparent Pricing" />
         <p className="mt-3 text-center text-sm text-white/60">No credit card required to start. Upgrade anytime.</p>
@@ -335,7 +335,7 @@ function Pricing() {
 
 function Faq() {
   return (
-    <section id="faq" className="bg-navy/80 backdrop-blur-sm">
+    <section id="faq">
       <div className="mx-auto max-w-3xl px-6 py-20">
       <SectionHeader eyebrow="FAQ" title="Frequently Asked Questions" />
       <div className="mt-10 space-y-3">
@@ -353,7 +353,7 @@ function Faq() {
 
 function FinalCta() {
   return (
-    <section className="bg-gradient-to-br from-brand/40 to-gold/20 bg-fixed py-20">
+    <section className="bg-brand/10 border-y border-white/10 py-20">
       <div className="mx-auto max-w-3xl px-6 text-center">
         <h2 className="font-display text-4xl font-bold md:text-5xl">Ready to Land Your Dream Job?</h2>
         <p className="mt-4 text-white/80">No credit card required. Build your first resume in 60 seconds.</p>
@@ -366,7 +366,7 @@ function FinalCta() {
 
 function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-navy/90 backdrop-blur-sm">
+    <footer className="border-t border-white/10 bg-navy">
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
@@ -398,7 +398,7 @@ function Footer() {
           ]} />
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/50 md:flex-row">
-          <div>© {new Date().getFullYear()} ResumeAI Pro · Built with AI for ambitious careers</div>
+          <div>© {new Date().getFullYear()} AI Resume Builder · Built with AI for ambitious careers</div>
           <div className="flex gap-4">
             <a href="#" aria-label="Twitter" className="hover:text-white transition">𝕏</a>
             <a href="#" aria-label="LinkedIn" className="hover:text-white transition">in</a>
@@ -440,7 +440,7 @@ function UserTypeCard({
   emoji, title, desc, bullets, href, cta, highlight,
 }: { emoji: string; title: string; desc: string; bullets: string[]; href: string; cta: string; highlight?: boolean }) {
   return (
-    <div className={`glass relative rounded-2xl p-6 transition hover:bg-white/10 hover:-translate-y-1 ${highlight ? "ring-2 ring-brand md:scale-105" : ""}`}>
+    <div className={`bg-white/5 border border-white/10 relative rounded-2xl p-6 transition hover:bg-white/10 hover:-translate-y-1 ${highlight ? "ring-2 ring-brand md:scale-105" : ""}`}>
       {highlight && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-brand to-gold px-3 py-0.5 text-xs font-semibold text-white">
           Most popular
@@ -459,7 +459,7 @@ function UserTypeCard({
 
 function Step({ n, title, body }: { n: number; title: string; body: string }) {
   return (
-    <div className="glass rounded-2xl p-6">
+    <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
       <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand text-sm font-bold">{n}</div>
       <h3 className="font-display text-lg font-semibold">{title}</h3>
       <p className="mt-1 text-sm text-white/70">{body}</p>
@@ -490,7 +490,7 @@ function PricingCard({
 
 function FaqItem({ q, a }: { q: string; a: string }) {
   return (
-    <details className="group glass rounded-xl px-5 py-4 transition open:bg-white/[0.08]">
+    <details className="group bg-white/5 border border-white/10 rounded-xl px-5 py-4 transition open:bg-white/[0.08]">
       <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
         <span>{q}</span>
         <span className="ml-4 inline-block h-5 w-5 shrink-0 transition group-open:rotate-180">

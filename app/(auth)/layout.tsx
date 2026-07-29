@@ -28,7 +28,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
               <Bullet>Tailored layouts for fresher, intermediate, executive</Bullet>
             </div>
 
-            <div className="glass rounded-2xl p-5">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
               <div className="flex gap-1 text-gold">
                 {"★★★★★".split("").map((s, j) => <span key={j}>{s}</span>)}
               </div>
@@ -46,7 +46,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           </div>
 
           <div className="flex gap-4 text-xs text-white/40">
-            <span>© {new Date().getFullYear()} ResumeAI Pro</span>
+            <span>© {new Date().getFullYear()} AI Resume Builder</span>
             <a href="/" className="hover:text-white/70 transition">Privacy</a>
             <a href="/" className="hover:text-white/70 transition">Terms</a>
           </div>

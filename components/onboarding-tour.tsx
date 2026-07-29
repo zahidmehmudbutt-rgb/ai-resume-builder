@@ -6,7 +6,7 @@ const STORAGE_KEY = "ra:onboarding-v1";
 
 const STEPS = [
   {
-    title: "Welcome to ResumeAI Pro 👋",
+    title: "Welcome to AI Resume Builder 👋",
     body: "Let's get you set up. We tailor everything to your career stage — fresher, intermediate, or senior.",
   },
   {

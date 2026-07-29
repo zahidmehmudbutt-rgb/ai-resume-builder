@@ -34,7 +34,7 @@ export default function ResetPasswordPage() {
   return (
     <div className="w-full">
       <Link href="/" className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition">← Back</Link>
-      <div className="glass rounded-2xl p-8">
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
         <h1 className="font-display text-2xl font-bold">Set a new password</h1>
         <p className="mt-1 text-sm text-white/60">Choose something strong you'll remember.</p>
 
