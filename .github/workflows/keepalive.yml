@@ -1,0 +1,46 @@
+name: Supabase keepalive
+
+# Supabase pauses free projects after ~7 consecutive days without database
+# activity. Runs every 3 days, giving roughly 2x margin against that window.
+#
+# Offset to 12:00 UTC so the portfolio apps spread their pings across the day
+# rather than all firing at once.
+#
+# NOTE: GitHub disables scheduled workflows on repositories with no activity for
+# 60 days. If this repo goes quiet for two months, re-enable the schedule from
+# the Actions tab or push any commit.
+
+on:
+  schedule:
+    - cron: "0 12 */3 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Query Supabase so the project registers activity
+        env:
+          # The anon key is designed to be public — it already ships inside the
+          # client bundle and is constrained by row-level security. Repository
+          # secrets override these defaults if you prefer to keep them out of git.
+          SUPABASE_URL: ${{ vars.SUPABASE_URL || 'https://jgartzeirssymejubwxh.supabase.co' }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnYXJ0emVpcnNzeW1lanVid3hoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3ODUwODgsImV4cCI6MjEwMTM2MTA4OH0.Yc0AkwgxwOJEyrk_pdlTvjWGTu9CxSVgbYaShXm0jzE' }}
+        run: |
+          set -euo pipefail
+          code=$(curl -s -o /tmp/out.txt -w '%{http_code}' \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
+            "${SUPABASE_URL}/rest/v1/profiles?select=id&limit=1")
+
+          echo "HTTP ${code}"
+          # A 200 with zero rows still counts: row-level security may filter the
+          # result, but the query reached Postgres, which is what keeps the
+          # project awake.
+          if [ "${code}" != "200" ] && [ "${code}" != "206" ]; then
+            echo "Unexpected status — the project may be paused or the key rotated."
+            head -c 400 /tmp/out.txt || true
+            exit 1
+          fi
+          echo "Supabase reached; pause timer reset."
