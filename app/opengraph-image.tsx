@@ -31,7 +31,7 @@ export default async function OG() {
             }}
           />
           <div style={{ fontSize: 36, fontWeight: 700 }}>
-            ResumeAI <span style={{ color: "#F59E0B" }}>Pro</span>
+            AI <span style={{ color: "#F59E0B" }}>Resume Builder</span>
           </div>
         </div>
         <div style={{ fontSize: 78, fontWeight: 800, lineHeight: 1.1, maxWidth: 900 }}>

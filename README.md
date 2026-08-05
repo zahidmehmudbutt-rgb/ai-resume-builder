@@ -8,6 +8,16 @@ Built with **Next.js 14**, **Supabase** (auth + Postgres + RLS), **Tailwind**, a
 
 ---
 
+## Live demo
+
+**https://ai-resume-builder-seven-weld.vercel.app**
+
+Sign in with `demo@resume.test` / `Demo1234!`.
+
+![Landing page](docs/screenshots/resume-landing.png)
+
+![Dashboard](docs/screenshots/resume-dashboard.png)
+
 ## Quick start
 
 ### 1. Clone & install
