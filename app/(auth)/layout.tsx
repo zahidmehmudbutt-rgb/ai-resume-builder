@@ -28,7 +28,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
               <Bullet>Tailored layouts for fresher, intermediate, executive</Bullet>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+            <div className="glass rounded-2xl p-5">
               <div className="flex gap-1 text-gold">
                 {"★★★★★".split("").map((s, j) => <span key={j}>{s}</span>)}
               </div>

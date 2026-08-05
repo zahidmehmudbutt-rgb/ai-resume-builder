@@ -73,7 +73,7 @@ function SignupInner() {
     <div className="w-full">
       <Link href="/" className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition">← Back</Link>
 
-      <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+      <div className="glass rounded-2xl p-8">
         {/* Step indicator */}
         <div className="mb-6 flex items-center gap-2 text-xs">
           <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold ${step >= 1 ? "bg-brand text-white" : "bg-white/10 text-white/50"}`}>1</span>

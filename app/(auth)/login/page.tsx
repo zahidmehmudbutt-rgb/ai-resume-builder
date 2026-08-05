@@ -6,6 +6,8 @@ import { Suspense, useState } from "react";
 import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
 import OAuthButtons from "@/components/oauth-buttons";
+import { DemoCredentialField } from "@/components/demo-credentials";
+import type { DemoAccount } from "@/lib/demo-credentials";
 
 export default function LoginPage() {
   return (
@@ -24,6 +26,11 @@ function LoginInner() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPwd, setShowPwd] = useState(false);
+
+  function fillDemo(account: DemoAccount) {
+    setEmail(account.email);
+    setPassword(account.password);
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -45,7 +52,7 @@ function LoginInner() {
   return (
     <div className="w-full">
       <Link href="/" className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition">← Back</Link>
-      <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+      <div className="glass rounded-2xl p-8">
         <h1 className="font-display text-2xl font-bold">Welcome back</h1>
         <p className="mt-1 text-sm text-white/60">Sign in to continue building.</p>
 
@@ -62,19 +69,23 @@ function LoginInner() {
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-white/70">Email</label>
-            <input type="email" autoComplete="email" className="input text-slate-900" required value={email} onChange={(e) => setEmail(e.target.value)} />
+            <DemoCredentialField onFill={fillDemo}>
+              <input type="email" autoComplete="email" className="input text-slate-900" required value={email} onChange={(e) => setEmail(e.target.value)} />
+            </DemoCredentialField>
           </div>
           <div>
             <div className="mb-1 flex items-center justify-between">
               <label className="block text-xs font-medium uppercase tracking-wider text-white/70">Password</label>
               <Link href="/forgot-password" className="text-xs text-brand hover:underline">Forgot?</Link>
             </div>
-            <div className="relative">
-              <input type={showPwd ? "text" : "password"} autoComplete="current-password" className="input pr-10 text-slate-900" required value={password} onChange={(e) => setPassword(e.target.value)} />
-              <button type="button" onClick={() => setShowPwd((v) => !v)} className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500 hover:text-slate-700">
-                {showPwd ? "Hide" : "Show"}
-              </button>
-            </div>
+            <DemoCredentialField onFill={fillDemo}>
+              <div className="relative">
+                <input type={showPwd ? "text" : "password"} autoComplete="current-password" className="input pr-10 text-slate-900" required value={password} onChange={(e) => setPassword(e.target.value)} />
+                <button type="button" onClick={() => setShowPwd((v) => !v)} className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500 hover:text-slate-700">
+                  {showPwd ? "Hide" : "Show"}
+                </button>
+              </div>
+            </DemoCredentialField>
           </div>
           <button className="btn-primary w-full" type="submit" disabled={loading}>
             {loading ? "Signing in..." : "Sign in"}
