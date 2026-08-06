@@ -1,12 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
+import { siteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "AI Resume Builder — Build a Resume That Gets You Hired",
   description:
     "AI-powered resume builder tailored to fresher, intermediate, or professional candidates. ATS-optimized, PDF export, instant cover letters.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(siteUrl()),
   openGraph: {
     title: "AI Resume Builder",
     description: "AI-powered resume builder. ATS-optimized. Land interviews 3x faster.",
